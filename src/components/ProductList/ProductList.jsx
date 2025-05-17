@@ -20,12 +20,13 @@ const getTotalPrice = (items = []) => {
 const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
     const {tg} = useTelegram();
+
     const onAdd = (product) => {
         const alreadyAdded = addedItems.find(item => item.id === product.id);
         let newItems = [];
 
         if(alreadyAdded) {
-            newItem = addedItems.filter(item => item.id !== product.id);
+            newItems = addedItems.filter(item => item.id !== product.id);
         } else {
             newItems = [...addedItems, product];
         }
