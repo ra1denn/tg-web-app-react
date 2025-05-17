@@ -38,14 +38,14 @@ const Form = () => {
         <div className={"form"}>
             <h3>введите ваши данные</h3>
             <input 
-                classname={'input'} 
+                className={'input'} 
                 type="text" 
                 placeholder={'страна'}
                 value={country}
                 onChange={onChangeCountry} 
             />
             <input 
-                classname={'input'} 
+                className={'input'} 
                 type="text" 
                 placeholder={'улица'} 
                 value={street}
