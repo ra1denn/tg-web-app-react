@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './ProductList.css';
 import ProductItem from '../ProductItem/ProductItem'
 import { useTelegram } from '../../hooks/useTelegram';
+import { useCallback, useEffect } from 'react';
 
 const products = [
     {id: '1', title: 'товар 1', price: 200, description: 'крутой товар 1'},
@@ -10,14 +11,14 @@ const products = [
     {id: '4', title: 'товар 4', price: 500, description: 'крутой товар 4'},
 ]
 
-const getTotalPrice = (items) => {
+const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
         return acc += item.price
     }, 0)
 }
 
 const ProductList = () => {
-    const [addedItems, setAddedItems] = userState([]);
+    const [addedItems, setAddedItems] = useState([]);
     const {tg} = useTelegram();
     const onAdd = (product) => {
         const alreadyAdded = addedItems.find(item => item.id === product.id);
@@ -30,7 +31,7 @@ const ProductList = () => {
         }
 
         setAddedItems(newItems)
-        
+
         if(newItems.length === 0) {
             tg.MainButton.hide();
         } else {
